@@ -275,3 +275,55 @@ body {
     box-shadow: rgba(0, 0, 0, 0.35) 2px 2px 2px; 
   }
   /*Modalas.jsx*/
+
+  /*logout*/
+.login {
+  border: 3px solid var(--antra-spalva);
+  background-color: var(--trecia-spalva);
+  width: 50px;
+  padding: 5px 15px;
+  border-radius: 25px;
+  box-shadow: rgba(0, 0, 0, 0.35) 10px 10px 10px; 
+}
+
+.login:hover {
+  background-color: var(--pirma-spalva);
+  box-shadow: rgba(0, 0, 0, 0.35) 4px 4px 4px; 
+  transition: 1s;
+}
+/*logout*/
+/*loginas*/
+.stulpelis-loginas {
+  border: 3px solid var(--antra-spalva);
+  background-image: var(--penkta-spalva);
+  border-radius: 25px;
+  box-shadow: rgba(0, 0, 0, 0.35) 10px 10px 10px; 
+  width: 320px;
+  padding: 10px;
+  margin-left: calc(50% - 175px);
+  margin-top: 20px;
+}
+
+@media (max-width: 360px){
+  .stulpelis-loginas{
+    max-width: 270px;
+    margin-left: calc(50% - 145px);
+  }
+}
+.loginas-v {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.loginas-button {
+  margin-top: 10px;
+  background-color: var(--pirma-spalva);
+  box-shadow: rgba(0, 0, 0, 0.35) 10px 10px 10px;
+}
+
+.loginas-button:hover {
+  background-color: var(--trecia-spalva);
+  box-shadow: rgba(0, 0, 0, 0.35) 4px 4px 4px; 
+}
+/*loginas*/
