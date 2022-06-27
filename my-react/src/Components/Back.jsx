@@ -7,9 +7,6 @@ import Modal from './Back/Modal';
 import { authConfig } from '../Functions/auth';
 import { Link } from 'react-router-dom';//505
 
-//import './bootstrap.css';
-
-
 
 function Back() {
 
