@@ -71,20 +71,6 @@ function Back() {
 
 
 
- ////7.redagavimao mygtukas ManikiuroListoAtvaizdavimas.jsx ir modalo atvaizdavimas
- //useEffect(() => {
-  //if (null === setCreateData) {
- //   return;
-  //}
- // axios.put('http://localhost:3003/manikiuro-salonas/'+ setCreateData.id, setCreateData) //
-  //.then(res => {
-  //  console.log(res);
- //   setLastUpdate(Date.now());//7paskutinis pakeitimas turi buti dabartine Data
- // });
-//
-//},[setCreateData]);
-
-
 //edit(redaguoti) mygtukas
 ////8.Create paspaudus redaguoti(edit) Modale keiciami duomenys ir atvaizduojami Creat o liste/////
 useEffect(() => {
