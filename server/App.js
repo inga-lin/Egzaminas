@@ -104,8 +104,61 @@ WHERE id = ?
   }
 );
 });
-/////////////////////////
-//////////////////////////
+/////////////////////////Fronto dalis
+////////////////////////// Fronto dalis
+
+//a reikalingas <Link> kad all rodytu visus ManikiuroListoAtvaizdavimasFronte o :manotipas tik pagal atitinkama tipa
+app.get('/knygos-list/all', (req, res) => { // <- http://localhost:3003/ 
+  // SELECT column1, column2, ...
+  // FROM table_name;       trees <- lenteles pavadinimas(issitrint komentara sita nes nepasileis)
+  const sql = `
+  SELECT
+  *
+  FROM knygos
+  `;
+  con.query(sql, function(err, result) {
+  if (err) throw err;
+  res.json(result);
+  });
+  });
+//+
+//a.biski pakeiciam Fronts.jsx useEffect
+//a reikalingas <Link> kad all rodytu visus ManikiuroListoAtvaizdavimasFronte o :manotipas tik pagal atitinkama tipas 'klasikinis','prancuziskas','kombinuotas'
+//SELECT column_name(s) <- cia isvardinam abieju lenteliu stulpelius
+app.get("/knygos-list/:manotipas", (req, res) => { //manotipas yra parametras jeigu tai nera all iesko 'klasikinis','prancuziskas','kombinuotas' ir kazkuri is ju atidaro
+  if (req.params.manotipas != "all") {
+  const sql = `
+          SELECT
+          *
+          FROM knygos
+          WHERE tipas = ?
+      `;
+  con.query(sql, [['grozinis','detektyvas','fantastika'].indexOf(req.params.manotipas) + 1], (err, result) => { //b.mes gaunam zodzius ir juos paverciam i indeksa
+    if (err) throw err;
+    res.send(result);
+  });
+}
+});
+
+
+//202 search paiska pagal pavadinima name+
+// SELECT column1, column2, ...
+// FROM table_name
+// WHERE columnN LIKE pattern;
+// ka reiskia '%a' ir t.t. https://www.w3schools.com/sql/sql_like.asp
+app.get("/knygos-list-search", (req, res) => {
+  const sql = `
+        SELECT
+        *
+        FROM knygos
+        WHERE knyga LIKE '%${req.query.s}%'
+    `;
+  con.query(sql, (err, result) => {
+    if (err) throw err;
+    res.send(result);
+  });
+});
+
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
