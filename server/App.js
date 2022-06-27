@@ -25,8 +25,6 @@ const con = mysql.createConnection({ //1
 
 ////
 /////505 apsirasom ko reik administratorio prisijungimui------>
-//https://www.md5hashgenerator.com/ slaptazodzio pavertimas i koda
-//jeigu yra /admin' tada tikrinam ['authorization'] (prisijungima jeigu nera /admin tai atidarom paprastai vartotojui)
 const doAuth = function(req, res, next) {
   if (0 === req.url.indexOf('/admin')) {
       const sql = `
@@ -77,9 +75,7 @@ app.get("/login-check", (req, res) => {
   });
 });
 
-        //jeigu suvedant slaprazodi su vardas sutampa tai mums uzkraus puslapi(res.send({ msg: 'ok', key });) jei ne, neatidarysres.send({ msg: 'error', key: '' });
-        //musu vedamas slaprazodis tikrinamas su musu serveryje uzkuoduotu kodu is https://www.md5hashgenerator.com/
-         // md5(req.body.pass) sitoje vietoje uzkuoduoja musu paprasta slaptazodi
+        
 app.post("/login", (req, res) => {
   const key = uuid.v4();
   const sql = `
@@ -97,10 +93,6 @@ app.post("/login", (req, res) => {
   });
 });
 /////////505 administratoriaus prisijungimo pabaiga-------------------->
-//////////////////////////////
-////
-
-
 
 
 app.get('/', (req, res) => {
@@ -108,9 +100,8 @@ app.get('/', (req, res) => {
 })
 
 
-app.get('/admin/knygos-manager', (req, res) => {    //1-pati pradzia     <- http://localhost:3003/trees-manager api puslapio pavadinimas
-  // SELECT column1, column2, ...
-  // FROM table_name;       trees <- lenteles pavadinimas(issitrint komentara sita nes nepasileis)
+app.get('/admin/knygos-manager', (req, res) => {   
+
   const sql = `
   SELECT
   *
@@ -125,10 +116,8 @@ app.get('/admin/knygos-manager', (req, res) => {    //1-pati pradzia     <- http
 
 ////////////////////////////
 /////////////////////////
-  //Create lenteles itasymas
-  //3.mygtuko paspaudimas- kuris is Create.jsx paims informaciaj (kai paspausim mygtuka) ir ja issius ir irasys i serveri////
-//3.Create.jsx info isaugojimas serveryje
-app.post('/knygos-manager', (req, res) => { //2 bendraujam su serveriu   //1-pati pradzia     <- http://localhost:3003/trees-manager api puslapio pavadinimas
+  //Create lenteles 
+app.post('/knygos-manager', (req, res) => {  
   
   const sql = `
   INSERT INTO knygos
@@ -137,7 +126,7 @@ app.post('/knygos-manager', (req, res) => { //2 bendraujam su serveriu   //1-pat
   `;
   con.query(
     sql,
-    [req.body.vvardas, req.body.tipas,req.body.knyga ], //jeigu tuscias trukmes ir kaina laukelis bus 0
+    [req.body.vvardas, req.body.tipas,req.body.knyga ], 
     (err, results) => {
       if (err) {
         throw err;
@@ -149,13 +138,13 @@ app.post('/knygos-manager', (req, res) => { //2 bendraujam su serveriu   //1-pat
 ////////////////////////////
 ////////////////////////////
 //deletle-mygtukas
-////6.Istrinimo mygtukas is ManikiuroListoAtvaizdavimas.jsx kuris istrins visa jo info///
-app.delete('/knygos-manager/:id', (req, res) => { //delytinam is trees lnteles kurio id yra ?(kazkoks)
+
+app.delete('/knygos-manager/:id', (req, res) => {
   const sql = `
       DELETE FROM knygos
       WHERE id = ?
       `;
-  con.query(sql, [req.params.id], (err, result) => { //[req.params.id] yra = '/trees-manager/:id'
+  con.query(sql, [req.params.id], (err, result) => { 
       if (err) {
           throw err;
       }
@@ -165,8 +154,6 @@ app.delete('/knygos-manager/:id', (req, res) => { //delytinam is trees lnteles k
 ////////////////////////////
 ////////////////////////////
 //edit(redaguoti) mygtukas
-////8.Create paspaudus redaguoti(edit) Modale keiciami duomenys ir atvaizduojami Creat o liste/////
-//buvo tik saugojimas be nuotraukos MODALO
 app.put("/knygos-manager/:id", (req, res) => {
 const sql = `
 UPDATE knygos
@@ -185,12 +172,10 @@ WHERE id = ?
 );
 });
 /////////////////////////Fronto dalis
-////////////////////////// Fronto dalis
 
 //a reikalingas <Link> kad all rodytu visus ManikiuroListoAtvaizdavimasFronte o :manotipas tik pagal atitinkama tipa
-app.get('/knygos-list/all', (req, res) => { // <- http://localhost:3003/ 
-  // SELECT column1, column2, ...
-  // FROM table_name;       trees <- lenteles pavadinimas(issitrint komentara sita nes nepasileis)
+app.get('/knygos-list/all', (req, res) => {  
+  
   const sql = `
   SELECT
   *
@@ -201,11 +186,8 @@ app.get('/knygos-list/all', (req, res) => { // <- http://localhost:3003/
   res.json(result);
   });
   });
-//+
-//a.biski pakeiciam Fronts.jsx useEffect
-//a reikalingas <Link> kad all rodytu visus ManikiuroListoAtvaizdavimasFronte o :manotipas tik pagal atitinkama tipas 'klasikinis','prancuziskas','kombinuotas'
-//SELECT column_name(s) <- cia isvardinam abieju lenteliu stulpelius
-app.get("/knygos-list/:manotipas", (req, res) => { //manotipas yra parametras jeigu tai nera all iesko 'klasikinis','prancuziskas','kombinuotas' ir kazkuri is ju atidaro
+
+app.get("/knygos-list/:manotipas", (req, res) => { 
   if (req.params.manotipas != "all") {
   const sql = `
           SELECT
@@ -213,7 +195,7 @@ app.get("/knygos-list/:manotipas", (req, res) => { //manotipas yra parametras je
           FROM knygos
           WHERE tipas = ?
       `;
-  con.query(sql, [['grozinis','detektyvas','fantastika'].indexOf(req.params.manotipas) + 1], (err, result) => { //b.mes gaunam zodzius ir juos paverciam i indeksa
+  con.query(sql, [['grozinis','detektyvas','fantastika'].indexOf(req.params.manotipas) + 1], (err, result) => { 
     if (err) throw err;
     res.send(result);
   });
@@ -221,11 +203,8 @@ app.get("/knygos-list/:manotipas", (req, res) => { //manotipas yra parametras je
 });
 
 
-//202 search paiska pagal pavadinima name+
-// SELECT column1, column2, ...
-// FROM table_name
-// WHERE columnN LIKE pattern;
-// ka reiskia '%a' ir t.t. https://www.w3schools.com/sql/sql_like.asp
+//202 search paiska pagal pavadinima 
+
 app.get("/knygos-list-search", (req, res) => {
   const sql = `
         SELECT
