@@ -1,0 +1,273 @@
+/*------------*/
+body {
+    font-family: 'Lobster', cursive;
+  }
+  :root {
+    --pirma-spalva: rgb(194, 225, 255);
+    --antra-spalva: rgb(136, 157, 179);
+    --trecia-spalva: rgb(255, 194, 215);
+    --ketvirta-spalva: #b38897;
+    --penkta-spalva: linear-gradient(260deg, rgb(194, 225, 255), rgb(255, 194, 215));
+  }
+  /*bendros detales*/
+  button {
+    padding: 5px 10px;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.7s;
+    border: 2px solid var(--antra-spalva);
+  }
+  
+  input  {
+    border-radius: 20px;
+    padding: 5px 10px;
+    border-color:  var(--antra-spalva);
+  }
+  
+  select {
+    border-radius: 20px;
+    padding: 5px 7px;
+    border-color:  var(--antra-spalva);
+    border: 2px solid var(--antra-spalva);
+    cursor: pointer;
+  }
+  
+  option {
+    border-radius: 20px;
+    border-style: hidden;
+    background-color: var(--pirma-spalva);
+  }
+  option:hover {
+    cursor: pointer;
+  }
+  
+  /*bendros detales*/
+  
+  .stulpeliu-tevas{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  
+  .stulpeliu-vaikas1 {
+    /*padding: 10px 30px;*/
+    margin: 20px;
+    min-width: 400px;
+    border-radius: 20px;
+  }
+  
+  .sarasas, .titleee {
+    box-shadow: rgba(0, 0, 0, 0.35) 10px 10px 10px; 
+  }
+  .stulpeliu-vaikas2 {
+    /*padding: 10px 30px;*/
+    margin: 20px;
+    min-width: 400px;
+    border-radius: 20px;
+  }
+  
+  .titleee {
+    background-color: var(--pirma-spalva);
+    border-left: 3px solid var(--antra-spalva);
+    border-right: 3px solid var(--antra-spalva);
+    border-top: 3px solid var(--antra-spalva);
+    border-radius: 0px 25px 0px 0px;
+    text-align: center;
+    width: 100%;
+  }
+  
+  h2 {
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+    padding: 20px;
+  }
+  
+  .ul {
+    list-style-type: none;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+  }
+  
+  ul {
+    list-style-type: none;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+  }
+  
+  .li{
+    border-bottom: 1px solid var(--antra-spalva);
+    width: 90%;
+    padding: 10px;
+    margin-left: -10px;
+  }
+  
+  .li:last-child {
+    border-bottom: none;
+  }
+  
+  .sarasas{
+    background-color: var(--trecia-spalva);
+    width: 100%;
+    border: 3px solid var(--antra-spalva);
+    border-radius: 0px 0px 0px 25px;
+  }
+  
+  /*forma prazia*/
+  .formos-vidus {
+    display: grid;
+    gap: 10px;
+    padding: 10px;
+  }
+  
+  .forma {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  label {
+    font-size: 20px;
+  }
+  
+  .forma-buttons {
+    background-color: var(--pirma-spalva);
+    border-color: var(--antra-spalva);
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.35) 10px 10px 10px;
+    width: 30%;
+  }
+  
+  .forma-buttonss {
+    display: flex;
+    justify-content: center;
+    
+  }
+  
+  .forma-buttons:hover {
+    background-color:var(--ketvirta-spalva);
+    transition: 1s;
+    color: white;
+    width: 25%;
+    box-shadow: rgba(0, 0, 0, 0.35) 2px 2px 2px; 
+  }
+  
+  input[type=file]::file-selector-button {
+    border: 2px solid var(--antra-spalva);
+    padding: 3px 10px;
+    border-radius: 20px;
+    background-color: var(--pirma-spalva);
+    transition: 1s;
+    cursor: pointer;
+    
+  }
+  
+  input[type=file]::file-selector-button:hover {
+    background-color:var(--ketvirta-spalva);
+    color: white;
+  }
+  
+  .forma-foto {
+    width: 90px; /*paslepiau nuotraukos uzrasa*/
+  
+  }
+  /*forma pabaiga*/
+  
+  /*ManikiuroListoAtvaizdavimas.jsx*/
+  .manikiuro-listas {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .mani-listas{
+    display: grid;
+    gap: 10px;
+  }
+  
+  .redaguoti {
+    background-color: var(--pirma-spalva);
+    box-shadow: rgba(0, 0, 0, 0.35) 10px 10px 10px; 
+  }
+  
+  .redaguoti:hover{
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 2px 2px 2px; 
+  }
+  
+  .istrinti {
+    background-color:var(--ketvirta-spalva);
+    box-shadow: rgba(0, 0, 0, 0.35) 10px 10px 10px; 
+  }
+  
+  .istrinti:hover{
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 2px 2px 2px; 
+  }
+  /*ManikiuroListoAtvaizdavimas.jsx*/
+  
+  /*Modalas.jsx*/
+  .modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+  }
+  
+  .modal-header {
+    background-color: var(--pirma-spalva);
+    border-left: 3px solid var(--antra-spalva);
+    border-right: 3px solid var(--antra-spalva);
+    border-top: 3px solid var(--antra-spalva);
+    border-radius: 0px 25px 0px 0px;
+    text-align: center;
+    width: 100%;
+    position: relative;
+  }
+  
+  .close {
+    position: absolute ;
+    right: -20px;
+    top: -20px;
+    background-color: var(--ketvirta-spalva);
+    width: 40px;
+    height: auto;
+  }
+  
+  .close > span {
+    font-size: 20px;
+  }
+  
+  .modal-footer{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  
+  .save {
+    background-color: var(--pirma-spalva);
+    box-shadow: rgba(0, 0, 0, 0.35) 10px 10px 10px; 
+  }
+  
+  .save:hover{
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 2px 2px 2px; 
+  }
+  
+  .cancel {
+    background-color:var(--ketvirta-spalva);
+    box-shadow: rgba(0, 0, 0, 0.35) 10px 10px 10px; 
+  }
+  
+  .cancel:hover{
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 2px 2px 2px; 
+  }
+  /*Modalas.jsx*/
