@@ -1,4 +1,4 @@
-function ManikiuroListoAtvaizdavimasFronte({knygos}) {
+function ListoAtvaizdavimasFronte({knygos}) {
 
     return(
         <li className="list">
@@ -11,4 +11,4 @@ function ManikiuroListoAtvaizdavimasFronte({knygos}) {
         </li>
     )
 }
-export default ManikiuroListoAtvaizdavimasFronte;
+export default ListoAtvaizdavimasFronte;

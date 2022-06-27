@@ -1,4 +1,4 @@
-import ManikiuroListoAtvaizdavimasFronte from "./Front/ManikiuroListoAtvaizdavimasFronte";
+import ListoAtvaizdavimasFronte from "./Front/ListoAtvaizdavimasFronte";
 import { useEffect, useState } from 'react';//2.-22. bendraujam su serveriu//101 useReducer  rusiuojam su serveriu
 import axios from 'axios';//2.-22. bendraujam su serveriu
 import { Link } from "react-router-dom";//susiimportint <Link>
@@ -81,7 +81,7 @@ function Front({ show }) {
                     <div className="sarasass sar">
                         <ul className="ull">
                             {
-                                knygos.map(m => <ManikiuroListoAtvaizdavimasFronte key={m.id} knygos={m}></ManikiuroListoAtvaizdavimasFronte>)//2 bendraujam su serveriu ir issitraukiam info//5. ManikiuroListoAtvaizdavimas//6.setIstrintiId istrinsim eilutes info
+                                knygos.map(m => <ListoAtvaizdavimasFronte key={m.id} knygos={m}></ListoAtvaizdavimasFronte>)//2 bendraujam su serveriu ir issitraukiam info//5. ManikiuroListoAtvaizdavimas//6.setIstrintiId istrinsim eilutes info
                             }
                         </ul>
                     </div>
