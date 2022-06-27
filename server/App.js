@@ -23,12 +23,92 @@ const con = mysql.createConnection({ //1
     database: 'egzaminas',   
 });
 
+////
+/////505 apsirasom ko reik administratorio prisijungimui------>
+//https://www.md5hashgenerator.com/ slaptazodzio pavertimas i koda
+//jeigu yra /admin' tada tikrinam ['authorization'] (prisijungima jeigu nera /admin tai atidarom paprastai vartotojui)
+const doAuth = function(req, res, next) {
+  if (0 === req.url.indexOf('/admin')) {
+      const sql = `
+      SELECT
+      name
+      FROM users
+      WHERE session = ?
+  `;
+      con.query(
+          sql, [req.headers['authorization'] || ''],
+          (err, results) => {
+              if (err) throw err;
+              if (!results.length) {
+                  res.status(401).send({});
+                  req.connection.destroy();
+              } else {
+                  next();
+              }
+          }
+      );
+  } else {
+      next();
+  }
+}
+app.use(doAuth)
+
+
+
+
+app.get("/admin/hello", (req, res) => {
+  res.send("Hello Admin!");
+});
+
+app.get("/login-check", (req, res) => {
+  const sql = `
+  SELECT
+  name
+  FROM users
+  WHERE session = ?
+  `;
+  con.query(sql, [req.headers['authorization'] || ''], (err, result) => {
+      if (err) throw err;
+      if (!result.length) {
+          res.send({ msg: 'error' });
+      } else {
+          res.send({ msg: 'ok' });
+      }
+  });
+});
+
+        //jeigu suvedant slaprazodi su vardas sutampa tai mums uzkraus puslapi(res.send({ msg: 'ok', key });) jei ne, neatidarysres.send({ msg: 'error', key: '' });
+        //musu vedamas slaprazodis tikrinamas su musu serveryje uzkuoduotu kodu is https://www.md5hashgenerator.com/
+         // md5(req.body.pass) sitoje vietoje uzkuoduoja musu paprasta slaptazodi
+app.post("/login", (req, res) => {
+  const key = uuid.v4();
+  const sql = `
+  UPDATE users
+  SET session = ?
+  WHERE name = ? AND pass = ?
+`;
+  con.query(sql, [key, req.body.user, md5(req.body.pass)], (err, result) => {
+      if (err) throw err;
+      if (!result.affectedRows) {
+          res.send({ msg: 'error', key: '' });
+      } else {
+          res.send({ msg: 'ok', key });
+      }
+  });
+});
+/////////505 administratoriaus prisijungimo pabaiga-------------------->
+//////////////////////////////
+////
+
+
+
+
 app.get('/', (req, res) => {
   res.send('Hello Worldddd!')
 })
 
 
-app.get('/knygos-manager', (req, res) => {    //1-pati pradzia     <- http://localhost:3003/trees-manager api puslapio pavadinimas
+app.get('/admin/knygos-manager', (req, res) => {    //1-pati pradzia     <- http://localhost:3003/trees-manager api puslapio pavadinimas
   // SELECT column1, column2, ...
   // FROM table_name;       trees <- lenteles pavadinimas(issitrint komentara sita nes nepasileis)
   const sql = `

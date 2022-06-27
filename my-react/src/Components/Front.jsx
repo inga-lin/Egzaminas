@@ -1,5 +1,5 @@
 import ManikiuroListoAtvaizdavimasFronte from "./Front/ManikiuroListoAtvaizdavimasFronte";
-import { useEffect,useReducer, useState } from 'react';//2.-22. bendraujam su serveriu//101 useReducer  rusiuojam su serveriu
+import { useEffect, useState } from 'react';//2.-22. bendraujam su serveriu//101 useReducer  rusiuojam su serveriu
 import axios from 'axios';//2.-22. bendraujam su serveriu
 import { Link } from "react-router-dom";//susiimportint <Link>
 import '../Front.css'; 
