@@ -33,14 +33,6 @@ function Front({ show }) {
   //},[show]);//{/*a.<Link> ir isrusiuoja//.show yra propsas kuri perduodam i Front.jsx*/}
 
 
-    //101 serverio puseje rusiavimas vardo ir kainos
-    const serverSort = (by, dir) => {
-    axios.get('http://localhost:3003/knygos-list-sorted/?dir='+ dir + '&by=' + by)
-    .then(res => {
-        setKnygos((res.data));//getDataFromServer pasiimam is Action/index.js
-    });
-    }
-
 
 
     //202 search
