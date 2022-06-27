@@ -48,7 +48,7 @@ function Create({setCreateData}) {
                     </div>
                     <div className="forma">
                         <label>Knygų rūšys:</label>
-                        <select className="form-control" value={tipas}  onChange={e => inputHandler(e, 'tipas')} >
+                        <select className="form-control rusys" value={tipas}  onChange={e => inputHandler(e, 'tipas')} >
                             <option  value="1">Grožinės literatūra</option>
                             <option  value="2">Detektyvai</option>
                             <option  value="3">Fantastika</option>
