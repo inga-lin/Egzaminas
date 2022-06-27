@@ -1,4 +1,4 @@
-function ManikiuroListoAtvaizdavimas({knygos, setIstrintiId, setRedaguotiModalData}) {
+function ListoAtvaizdavimas({knygos, setIstrintiId, setRedaguotiModalData}) {
     //5. ManikiuroListoAtvaizdavimas
         return(
             <li className='li'>
@@ -17,4 +17,4 @@ function ManikiuroListoAtvaizdavimas({knygos, setIstrintiId, setRedaguotiModalDa
         )
     }
     
-    export default ManikiuroListoAtvaizdavimas;
+    export default ListoAtvaizdavimas;

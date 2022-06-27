@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';//2 bendraujam su serveriu
 import axios from 'axios';//2 bendraujam su serveriu
 import '../Back.css';
 import Create from './Back/Create';
-import ManikiuroListoAtvaizdavimas from './Back/ManikiuroListoAtvaizdavimas';
+import ListoAtvaizdavimas from './Back/ListoAtvaizdavimas';
 import Modal from './Back/Modal';
 import { authConfig } from '../Functions/auth';
 import { Link } from 'react-router-dom';//505
@@ -101,7 +101,7 @@ useEffect(() => {
           <div className="sarasas">
             <ul className='ul' >
               {
-                 knygos.map(m => <ManikiuroListoAtvaizdavimas key={m.id} knygos={m} setIstrintiId={setIstrintiId} setRedaguotiModalData={setRedaguotiModalData}></ManikiuroListoAtvaizdavimas>)//2 bendraujam su serveriu ir issitraukiam info//5. ManikiuroListoAtvaizdavimas//6.setIstrintiId istrinsim eilutes info
+                 knygos.map(m => <ListoAtvaizdavimas key={m.id} knygos={m} setIstrintiId={setIstrintiId} setRedaguotiModalData={setRedaguotiModalData}></ListoAtvaizdavimas>)//2 bendraujam su serveriu ir issitraukiam info//5. ManikiuroListoAtvaizdavimas//6.setIstrintiId istrinsim eilutes info
               }
             </ul>
           </div>
