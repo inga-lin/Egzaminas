@@ -17,10 +17,10 @@ function Back() {
   //4. vieta is kurios gausim sarasiuka
   const [lastUpdate, setLastUpdate] = useState(Date.now()); //4.cia bus laikas kada pirma karta reactasparsisiunte duomenis
 
-  ////6.Istrinimo mygtukas is ManikiuroListoAtvaizdavimas.jsx kuris istrins visa eilutes info 
+  ////6.Istrinimo mygtukas is ListoAtvaizdavimas.jsx kuris istrins visa eilutes info 
   const[istrintiId, setIstrintiId] = useState(null);
 
-  ////7.redagavimao mygtukas ManikiuroListoAtvaizdavimas.jsx ir modalo atvaizdavimas
+  ////7.redagavimao mygtukas ListoAtvaizdavimas.jsx ir modalo atvaizdavimas
   const [redaguotiModalData, setRedaguotiModalData] = useState(null);//10. ir ji perduosim per Modal ir ten pasiimsim
 
   //8 Create paspaudus redaguoti mygtuka.....
@@ -54,12 +54,12 @@ function Back() {
 
 
 //deletle-mygtukas
-  ////6.Istrinimo mygtukas is ManikiuroListoAtvaizdavimas.jsx kuris istrins visa jo info///
+  ////6.Istrinimo mygtukas is ListoAtvaizdavimas.jsx kuris istrins visa jo info///
   useEffect(() => {
     if (null === istrintiId) { //6)jeigu createData yra === null nieko nedarom ir einam lauk is cia
       return;
     }
-    axios.delete('http://localhost:3003/knygos-manager/' + istrintiId.id, ) //!!!!nepamirsti gale prideti /  prie manikiuro-salonas/  
+    axios.delete('http://localhost:3003/knygos-manager/' + istrintiId.id, ) //!!!!nepamirsti gale prideti /    
     .then(res => {
       console.log(res); 
       setLastUpdate(Date.now()); //4
@@ -101,7 +101,7 @@ useEffect(() => {
           <div className="sarasas">
             <ul className='ul' >
               {
-                 knygos.map(m => <ListoAtvaizdavimas key={m.id} knygos={m} setIstrintiId={setIstrintiId} setRedaguotiModalData={setRedaguotiModalData}></ListoAtvaizdavimas>)//2 bendraujam su serveriu ir issitraukiam info//5. ManikiuroListoAtvaizdavimas//6.setIstrintiId istrinsim eilutes info
+                 knygos.map(m => <ListoAtvaizdavimas key={m.id} knygos={m} setIstrintiId={setIstrintiId} setRedaguotiModalData={setRedaguotiModalData}></ListoAtvaizdavimas>)//2 bendraujam su serveriu ir issitraukiam info//5. ListoAtvaizdavimas//6.setIstrintiId istrinsim eilutes info
               }
             </ul>
           </div>

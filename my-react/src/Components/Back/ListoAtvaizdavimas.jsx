@@ -1,5 +1,5 @@
 function ListoAtvaizdavimas({knygos, setIstrintiId, setRedaguotiModalData}) {
-    //5. ManikiuroListoAtvaizdavimas
+    //5. ListoAtvaizdavimas
         return(
             <li className='li'>
                 <div className="manikiuro-listas">
